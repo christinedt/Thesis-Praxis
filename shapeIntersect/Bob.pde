@@ -32,7 +32,7 @@ class Bob {
   void run(ArrayList<Bob> bills) {
     update();
     intersect(bills);
-    display();
+//    display();
   }
   
   void intersect(ArrayList<Bob> bills) {
