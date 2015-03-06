@@ -7,9 +7,9 @@ class Bob {
     hue = int(random(0, 255));
     size = 30;
     radius = size/2;
-    fieldSize = 1000;
+    fieldSize = 1500;
     fieldRadius = fieldSize/2;
-    fieldIncrement = int(random(5, 20);
+    fieldIncrement = int(random(5, 20));
     int x = int(random(size/2, (width-size/2)));
     int y = int(random(size/2, (height-size/2)));
 //    size = int(random(0, 50));
@@ -84,9 +84,9 @@ class Bob {
     float angle1, angle2;
     
     //Dots
-    int dotSize = 5;
+    int dotSize = 1;
     noStroke();
-    fill(hue, 200, 200, 15);
+    fill(hue, 200, 200, 200);
     ellipse(distIntA.x, distIntA.y, dotSize, dotSize);
     ellipse(distIntB.x, distIntB.y, dotSize, dotSize);
     
