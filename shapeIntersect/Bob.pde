@@ -1,18 +1,26 @@
 class Bob {
   PVector position, velocity;
-  int size, fieldSize, fieldIncrement, hue;
-  float radius, fieldRadius;
+  int size, fieldSize, fieldRings, hue;
+  float radius, fieldIncrement, fieldRadius;
+  String[] fieldTypes = { "circle", "square" };
+  String fieldType;
   
   Bob() {
+    //Bob properties
     hue = int(random(0, 255));
     size = 30;
     radius = size/2;
-    fieldSize = 1500;
+    
+    //field properties
+    fieldSize = 1000;
     fieldRadius = fieldSize/2;
-    fieldIncrement = int(random(5, 20));
+    fieldRings = int(random(10, 200));
+    fieldIncrement = fieldRadius/fieldRings;
+    fieldType = fieldTypes[int(random(0, 2))];
+    println(fieldType);
+    
     int x = int(random(size/2, (width-size/2)));
     int y = int(random(size/2, (height-size/2)));
-//    size = int(random(0, 50));
     position = new PVector(x, y);
     velocity = PVector.random2D();
   }
@@ -32,7 +40,7 @@ class Bob {
   void run(ArrayList<Bob> bills) {
     update();
     intersect(bills);
-//    display();
+    display();
   }
   
   void intersect(ArrayList<Bob> bills) {
@@ -84,11 +92,11 @@ class Bob {
     float angle1, angle2;
     
     //Dots
-    int dotSize = 1;
+    int dotSize = 2;
     noStroke();
     fill(hue, 200, 200, 200);
     ellipse(distIntA.x, distIntA.y, dotSize, dotSize);
-    ellipse(distIntB.x, distIntB.y, dotSize, dotSize);
+//    ellipse(distIntB.x, distIntB.y, dotSize, dotSize);
     
     //Arcs
     /*
@@ -120,12 +128,10 @@ class Bob {
         angle2 += TWO_PI;
       }
     }
-    noFill();
-    strokeWeight(2);
-    stroke(0, 0, 0);
+    fill(100, 1);
+    noStroke();
     arc(position.x, position.y, 2*tempSize, 2*tempSize, angle1, angle2, OPEN);
     */
-    
   }
   
   void renderOverlapShape(float shapeSize){
